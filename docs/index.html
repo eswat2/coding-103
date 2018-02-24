@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coding</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          rel="stylesheet"
+          type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"
+            type="text/javascript"></script>
+    <script src="https://use.fontawesome.com/85640850f4.js"
+            type="text/javascript"></script>
+    <link href="main.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="alert alert-light boxed">
+        <strong>Image Preview:</strong> 
+        <ul>
+          <li>drop an image on the box</li>
+          <li>enter an image URL (optional)</li>
+          <li>click the box to clear</li>
+        </ul>
+      </div>
+      <div class="dropBox" @drop.prevent="onDrop" @dragover.prevent @click="removeImage">
+        <img class="preview" v-bind:src="image"></img>
+      </div>
+      <div class="input-group boxed">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Image URL:</span>
+        </div>
+        <input type="text" class="form-control" v-model="image">
+        <div class="input-group-append" v-if="image.length > 0" @click="removeImage">
+          <span class="input-group-text"><i class="fa fa-times"></i></span>
+        </div>
+      </div>
+      <div class="alert alert-primary boxed" v-if="invalid">
+        <strong>INVALID:</strong>  please drop an image...
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
