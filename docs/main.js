@@ -11,17 +11,17 @@ const app = new Vue({
       this.invalid = false
       this.file = file
     },
-    removeImage: function() {
+    removeImage: function(e, flag = false) {
+      this.invalid = flag
       this.image = ''
       this.file = null
-      this.invalid = false
     }
   },
   watch: {
     file: function(data) {
       if (data) {
         if (!data.type.match('image.*')) {
-          this.removeImage()
+          this.removeImage(null, true)
           return
         }
         var reader = new FileReader()
