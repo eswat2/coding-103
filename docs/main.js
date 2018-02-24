@@ -8,12 +8,10 @@ const app = new Vue({
   methods: {
     onDrop: function(e) {
       const file = e.dataTransfer.files[0]
-      console.log('-- drop: ', file)
       this.invalid = false
       this.file = file
     },
     removeImage: function() {
-      console.log('-- remove')
       this.image = ''
       this.file = null
       this.invalid = false
@@ -23,7 +21,7 @@ const app = new Vue({
     file: function(data) {
       if (data) {
         if (!data.type.match('image.*')) {
-          this.invalid = true
+          this.removeImage()
           return
         }
         var reader = new FileReader()
