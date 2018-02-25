@@ -1,6 +1,6 @@
-#app {
-    width: 600px;
-    height: 1024px;
+body {
+  width: 600px;
+  height: 1024px;
 }
 
 .dropBox {
