@@ -11,8 +11,8 @@ const app = new Vue({
       this.invalid = false
       this.file = file
     },
-    removeImage: function(e, flag = false) {
-      this.invalid = flag
+    removeImage: function(e, invalid) {
+      this.invalid = invalid ? true : false
       this.image = ''
       this.file = null
     }
