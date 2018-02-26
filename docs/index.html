@@ -23,7 +23,7 @@
           <li>click the box to clear</li>
         </ul>
       </div>
-      <div class="dropBox" @drop.prevent="onDrop" @dragover.prevent @click="removeImage">
+      <div class="dropBox" @drop.prevent="onDrop" @dragover.prevent @click="onClick">
         <img class="preview" v-bind:src="image"></img>
       </div>
       <div class="input-group boxed">
@@ -31,7 +31,7 @@
           <span class="input-group-text">Image URL:</span>
         </div>
         <input type="text" class="form-control" v-model="image">
-        <div class="input-group-append" v-if="image.length > 0" @click="removeImage">
+        <div class="input-group-append" v-if="image.length > 0" @click="onClick">
           <span class="input-group-text"><i class="fa fa-times"></i></span>
         </div>
       </div>

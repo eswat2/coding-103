@@ -6,13 +6,16 @@ const app = new Vue({
     invalid: false
   },
   methods: {
+    onClick: function(e) {
+      this.reset(false)
+    },
     onDrop: function(e) {
       const file = e.dataTransfer.files[0]
       this.invalid = false
       this.file = file
     },
-    removeImage: function(e, invalid) {
-      this.invalid = invalid ? true : false
+    reset: function(invalid) {
+      this.invalid = invalid
       this.image = ''
       this.file = null
     }
@@ -21,7 +24,7 @@ const app = new Vue({
     file: function(data) {
       if (data) {
         if (!data.type.match('image.*')) {
-          this.removeImage(null, true)
+          this.reset(true)
           return
         }
         var reader = new FileReader()
